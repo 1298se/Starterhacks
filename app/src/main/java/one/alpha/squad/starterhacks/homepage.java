@@ -10,6 +10,7 @@ public class homepage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homepage);
+
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.icon_container /* The id of the icon container */, new BitmojiIconFragment())
                 .commit();
