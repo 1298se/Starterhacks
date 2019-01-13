@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="one.alpha.squad.starterhacks">
+    <uses-permission android:name="android.permission.INTERNET" />
+
 
     <application
         android:allowBackup="true"
@@ -9,6 +11,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <meta-data android:name="com.snapchat.kit.sdk.clientId" android:value="aabbf06f-c75d-4fb4-96a8-f45b264fc246" />
+        <meta-data android:name="com.snapchat.kit.sdk.redirectUrl" android:value="starterhacks://login" />
+        <meta-data android:name="com.snapchat.kit.sdk.scopes" android:resource="@array/snap_connect_scopes" /> <!-- This should be a string array of scopes !-->
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -16,6 +23,30 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name="com.snapchat.kit.sdk.SnapKitActivity"
+            android:launchMode="singleTask"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <!--
+                    Enter the parts of your redirect url below
+                    e.g., if your redirect url is myapp://snap-kit/oauth2
+                        android:scheme="myapp"
+                        android:host="abc"
+                        android:path="/xy/z"
+                !-->
+                <data
+                    android:scheme="starterhacks"
+                    android:host="login"
+                    />
+            </intent-filter>
+
+        </activity>
+
     </application>
 
 </manifest>
